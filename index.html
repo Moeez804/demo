@@ -1,0 +1,2562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ismail Jewellery — Timeless in Every Way</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    /* ==============================================================
+       ✦ CINEMATIC GOLD PRELOADER ✦
+       ============================================================== */
+    #preloader {
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: #0f0b08;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transition: opacity 0.8s cubic-bezier(0.65, 0, 0.35, 1),
+                  visibility 0.8s cubic-bezier(0.65, 0, 0.35, 1);
+    }
+    #preloader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    /* ── Background Glow ── */
+    .preloader-bg-glow {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .preloader-bg-glow::before {
+      content: '';
+      width: 70%;
+      height: 70%;
+      background: radial-gradient(ellipse at center, rgba(201, 169, 110, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      animation: bgPulse 3s ease-in-out infinite;
+    }
+    @keyframes bgPulse {
+      0%, 100% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.2); opacity: 1; }
+    }
+
+    /* ── Ring Animation ── */
+    .preloader-ring {
+      position: absolute;
+      width: 280px;
+      height: 280px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      border-top: 2px solid rgba(201, 169, 110, 0.15);
+      border-right: 2px solid rgba(201, 169, 110, 0.05);
+      animation: ringSpin 8s linear infinite;
+    }
+    .preloader-ring:nth-child(2) {
+      width: 320px;
+      height: 320px;
+      animation-direction: reverse;
+      animation-duration: 12s;
+      border-top: 2px solid rgba(201, 169, 110, 0.08);
+      border-left: 2px solid rgba(201, 169, 110, 0.12);
+    }
+    .preloader-ring:nth-child(3) {
+      width: 240px;
+      height: 240px;
+      animation-duration: 6s;
+      border-bottom: 2px solid rgba(201, 169, 110, 0.1);
+      border-right: 2px solid rgba(201, 169, 110, 0.05);
+    }
+    @keyframes ringSpin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* ── Glowing Ring (draws itself) ── */
+    .preloader-glow-ring {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      border: 2px solid transparent;
+      border-top: 2px solid #c9a96e;
+      box-shadow: 0 0 40px rgba(201, 169, 110, 0.08), 0 0 80px rgba(201, 169, 110, 0.04);
+      animation: glowRingDraw 2.2s ease-in-out forwards;
+      opacity: 0;
+    }
+    @keyframes glowRingDraw {
+      0% { opacity: 0; transform: rotate(0deg) scale(0.5); border-top-color: transparent; }
+      30% { opacity: 1; transform: rotate(90deg) scale(0.8); border-top-color: #c9a96e; }
+      60% { transform: rotate(180deg) scale(1); border-top-color: #c9a96e; }
+      100% { opacity: 1; transform: rotate(360deg) scale(1); border-top-color: #b06a3a; }
+    }
+
+    /* ── Logo Text Container ── */
+    .preloader-logo-wrapper {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    /* ── SVG Text with Stroke Animation ── */
+    .preloader-svg-text {
+      width: 420px;
+      max-width: 90vw;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+    .preloader-svg-text .char {
+      fill: none;
+      stroke: url(#goldGrad);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 400;
+      stroke-dashoffset: 400;
+      animation: strokeReveal 2s ease-in-out forwards;
+    }
+    /* Staggered delays for each letter */
+    .preloader-svg-text .char:nth-child(1) { animation-delay: 0.05s; }
+    .preloader-svg-text .char:nth-child(2) { animation-delay: 0.10s; }
+    .preloader-svg-text .char:nth-child(3) { animation-delay: 0.15s; }
+    .preloader-svg-text .char:nth-child(4) { animation-delay: 0.20s; }
+    .preloader-svg-text .char:nth-child(5) { animation-delay: 0.25s; }
+    .preloader-svg-text .char:nth-child(6) { animation-delay: 0.30s; }
+    .preloader-svg-text .char:nth-child(7) { animation-delay: 0.35s; }
+    .preloader-svg-text .char:nth-child(8) { animation-delay: 0.40s; }
+    .preloader-svg-text .char:nth-child(9) { animation-delay: 0.45s; }
+    .preloader-svg-text .char:nth-child(10) { animation-delay: 0.50s; }
+    .preloader-svg-text .char:nth-child(11) { animation-delay: 0.55s; }
+    .preloader-svg-text .char:nth-child(12) { animation-delay: 0.60s; }
+    .preloader-svg-text .char:nth-child(13) { animation-delay: 0.65s; }
+    .preloader-svg-text .char:nth-child(14) { animation-delay: 0.70s; }
+    .preloader-svg-text .char:nth-child(15) { animation-delay: 0.75s; }
+    .preloader-svg-text .char:nth-child(16) { animation-delay: 0.80s; }
+    .preloader-svg-text .char:nth-child(17) { animation-delay: 0.85s; }
+    .preloader-svg-text .char:nth-child(18) { animation-delay: 0.90s; }
+    .preloader-svg-text .char:nth-child(19) { animation-delay: 0.95s; }
+    .preloader-svg-text .char:nth-child(20) { animation-delay: 1.00s; }
+    .preloader-svg-text .char:nth-child(21) { animation-delay: 1.05s; }
+    .preloader-svg-text .char:nth-child(22) { animation-delay: 1.10s; }
+    .preloader-svg-text .char:nth-child(23) { animation-delay: 1.15s; }
+    .preloader-svg-text .char:nth-child(24) { animation-delay: 1.20s; }
+
+    @keyframes strokeReveal {
+      0% { stroke-dashoffset: 400; fill: transparent; }
+      60% { stroke-dashoffset: 0; fill: transparent; }
+      100% { stroke-dashoffset: 0; fill: url(#goldGrad); fill-opacity: 1; }
+    }
+
+    /* ── Shimmer overlay on text ── */
+    .preloader-shimmer-overlay {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+      border-radius: 4px;
+    }
+    .preloader-shimmer-overlay::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(
+        105deg,
+        transparent 30%,
+        rgba(255, 253, 249, 0.04) 45%,
+        rgba(201, 169, 110, 0.08) 50%,
+        rgba(255, 253, 249, 0.04) 55%,
+        transparent 70%
+      );
+      animation: shimmerSweep 3s ease-in-out infinite;
+    }
+    @keyframes shimmerSweep {
+      0% { transform: translateX(-100%) rotate(10deg); }
+      100% { transform: translateX(100%) rotate(10deg); }
+    }
+
+    /* ── Tagline ── */
+    .preloader-tagline {
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: rgba(255, 253, 249, 0.2);
+      margin-top: 16px;
+      font-weight: 300;
+      opacity: 0;
+      animation: taglineFade 2s ease-in-out 1.6s forwards;
+    }
+    @keyframes taglineFade {
+      0% { opacity: 0; transform: translateY(10px); letter-spacing: 0.5em; }
+      100% { opacity: 0.5; transform: translateY(0); letter-spacing: 0.6em; }
+    }
+
+    /* ── Particle Canvas ── */
+    #preloaderParticles {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    /* ── Brand Mark (small diamond) ── */
+    .preloader-mark {
+      display: inline-block;
+      margin-bottom: 24px;
+      opacity: 0;
+      animation: markFade 1.2s ease-in-out 0.3s forwards;
+    }
+    @keyframes markFade {
+      0% { opacity: 0; transform: scale(0.6) rotate(-30deg); }
+      100% { opacity: 1; transform: scale(1) rotate(0deg); }
+    }
+    .preloader-mark svg {
+      width: 36px;
+      height: 36px;
+      filter: drop-shadow(0 0 30px rgba(201, 169, 110, 0.1));
+    }
+
+    /* ==============================================================
+       ✦ REST OF THE SITE (same as before) ✦
+       ============================================================== */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      font-family: 'Jost', sans-serif;
+      color: #241a12;
+      background: #f5efe6;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .serif {
+      font-family: 'Cormorant Garamond', serif;
+    }
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #8f5228;
+      font-weight: 500;
+    }
+    .wrap {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 60px;
+    }
+    button {
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      background: none;
+    }
+
+    :root {
+      --cream: #f5efe6;
+      --cream-2: #efe6d8;
+      --panel: #eee2ce;
+      --brown-900: #241a12;
+      --brown-700: #4a382a;
+      --brown-500: #7a6552;
+      --terracotta: #b06a3a;
+      --terracotta-dark: #8f5228;
+      --gold: #c9a96e;
+      --gold-light: #e8d5a8;
+      --gold-glow: rgba(201, 169, 110, 0.4);
+      --line: rgba(36, 26, 18, 0.14);
+      --white: #fffdf9;
+    }
+
+    .announce {
+      background: var(--brown-900);
+      text-align: center;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      padding: 10px 0;
+      color: var(--gold-light);
+      text-transform: uppercase;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+    .announce .marquee {
+      display: inline-block;
+      animation: marqueeScroll 20s linear infinite;
+    }
+    @keyframes marqueeScroll {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+
+    header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px 60px;
+      background: rgba(20, 14, 9, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 253, 249, 0.06);
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      transition: all .4s ease;
+    }
+    header.scrolled {
+      padding: 10px 60px;
+      background: rgba(20, 14, 9, 0.95);
+    }
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      letter-spacing: 0.24em;
+      font-weight: 600;
+      color: #fff;
+    }
+    .logo small {
+      display: block;
+      font-family: 'Jost';
+      font-size: 8px;
+      letter-spacing: 0.32em;
+      font-weight: 300;
+      color: rgba(255, 253, 249, 0.5);
+      text-align: center;
+      margin-top: 2px;
+    }
+    nav {
+      display: flex;
+      gap: 38px;
+    }
+    nav a {
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255, 253, 249, 0.6);
+      transition: all .3s;
+      position: relative;
+    }
+    nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 0;
+      width: 0;
+      height: 1.5px;
+      background: var(--gold);
+      transition: width .3s;
+    }
+    nav a:hover {
+      color: #fff;
+    }
+    nav a:hover::after {
+      width: 100%;
+    }
+    .icons {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    .icons button {
+      color: rgba(255, 253, 249, 0.6);
+      display: flex;
+      align-items: center;
+      transition: color .3s;
+    }
+    .icons button:hover {
+      color: #fff;
+    }
+    .icons .bag-label {
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      color: rgba(255, 253, 249, 0.6);
+    }
+    .icons .bag-label:hover {
+      color: #fff;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--brown-900);
+    }
+    #particleCanvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      pointer-events: none;
+    }
+    .hero-bg-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 0;
+      animation: heroZoom 20s ease-in-out infinite alternate;
+    }
+    @keyframes heroZoom {
+      0% { transform: scale(1); }
+      100% { transform: scale(1.08); }
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 50%, rgba(20, 14, 9, 0.5) 0%, rgba(20, 14, 9, 0.85) 70%),
+        radial-gradient(ellipse at 70% 50%, rgba(20, 14, 9, 0.3) 0%, transparent 60%);
+      z-index: 1;
+    }
+    .hero-glow-1 {
+      position: absolute;
+      top: -30%;
+      right: -10%;
+      width: 70%;
+      height: 120%;
+      background: radial-gradient(ellipse, rgba(201, 169, 110, 0.12) 0%, transparent 70%);
+      z-index: 1;
+      animation: glowPulse 4s ease-in-out infinite;
+    }
+    .hero-glow-2 {
+      position: absolute;
+      bottom: -30%;
+      left: -10%;
+      width: 60%;
+      height: 100%;
+      background: radial-gradient(ellipse, rgba(176, 106, 58, 0.08) 0%, transparent 70%);
+      z-index: 1;
+      animation: glowPulse 5s ease-in-out infinite reverse;
+    }
+    @keyframes glowPulse {
+      0%, 100% { opacity: 0.5; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.1); }
+    }
+    .floating-particle {
+      position: absolute;
+      border-radius: 50%;
+      background: var(--gold);
+      z-index: 2;
+      pointer-events: none;
+      opacity: 0;
+      animation: floatParticle 6s ease-in-out infinite;
+    }
+    .floating-particle:nth-child(1) { width: 4px; height: 4px; top: 15%; left: 10%; animation-delay: 0s; box-shadow: 0 0 10px var(--gold-glow); }
+    .floating-particle:nth-child(2) { width: 6px; height: 6px; top: 25%; right: 20%; animation-delay: 1.5s; box-shadow: 0 0 15px var(--gold-glow); }
+    .floating-particle:nth-child(3) { width: 3px; height: 3px; bottom: 30%; left: 25%; animation-delay: 3s; box-shadow: 0 0 8px var(--gold-glow); }
+    .floating-particle:nth-child(4) { width: 5px; height: 5px; top: 60%; right: 10%; animation-delay: 0.8s; box-shadow: 0 0 12px var(--gold-glow); }
+    .floating-particle:nth-child(5) { width: 4px; height: 4px; bottom: 15%; right: 35%; animation-delay: 2.2s; box-shadow: 0 0 10px var(--gold-glow); }
+    .floating-particle:nth-child(6) { width: 7px; height: 7px; top: 10%; right: 45%; animation-delay: 4s; box-shadow: 0 0 20px var(--gold-glow); }
+    .floating-particle:nth-child(7) { width: 3px; height: 3px; bottom: 40%; left: 5%; animation-delay: 1.2s; box-shadow: 0 0 8px var(--gold-glow); }
+    .floating-particle:nth-child(8) { width: 5px; height: 5px; top: 45%; left: 35%; animation-delay: 3.5s; box-shadow: 0 0 12px var(--gold-glow); }
+    @keyframes floatParticle {
+      0% { opacity: 0; transform: translateY(20px) scale(0); }
+      20% { opacity: 1; }
+      80% { opacity: 1; }
+      100% { opacity: 0; transform: translateY(-80px) scale(1.5); }
+    }
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 120px 60px 100px;
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .hero-copy {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      animation: fadeInUp 1s ease-out;
+    }
+    @keyframes fadeInUp {
+      0% { opacity: 0; transform: translateY(40px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .hero-copy .eyebrow {
+      color: var(--gold-light);
+      letter-spacing: 0.35em;
+      font-size: 11px;
+      margin-bottom: 14px;
+      font-weight: 300;
+      opacity: 0.8;
+    }
+    .hero-copy .eyebrow .line {
+      display: inline-block;
+      width: 50px;
+      height: 1.5px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      margin-right: 18px;
+      vertical-align: middle;
+    }
+    .hero-copy h1 {
+      font-size: 88px;
+      line-height: 0.92;
+      font-weight: 500;
+      color: #fff;
+      margin-bottom: 18px;
+      letter-spacing: -0.03em;
+      animation: revealText 1.2s ease-out;
+    }
+    @keyframes revealText {
+      0% { opacity: 0; transform: translateX(-30px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+    .hero-copy h1 .highlight {
+      background: linear-gradient(135deg, #f6e8c3, var(--gold), #f6e8c3);
+      background-size: 200% 200%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: goldShimmer 3s ease-in-out infinite;
+    }
+    .hero-copy h1 .sub-text {
+      font-size: 26px;
+      color: var(--gold-light);
+      -webkit-text-fill-color: var(--gold-light);
+      display: block;
+      margin-top: 10px;
+      letter-spacing: 0.2em;
+      font-weight: 300;
+      opacity: 0.7;
+    }
+    @keyframes goldShimmer {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    .hero-copy p {
+      font-size: 16px;
+      color: rgba(255, 253, 249, 0.6);
+      max-width: 420px;
+      margin-bottom: 40px;
+      line-height: 1.8;
+      font-weight: 300;
+      letter-spacing: 0.02em;
+    }
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), var(--terracotta-dark));
+      color: #fff;
+      padding: 18px 40px;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      border-radius: 0;
+      transition: all .4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      position: relative;
+      overflow: hidden;
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-weight: 500;
+      border: 1px solid transparent;
+      cursor: pointer;
+    }
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, var(--terracotta-dark), var(--gold));
+      opacity: 0;
+      transition: opacity .4s;
+    }
+    .btn-primary:hover::before { opacity: 1; }
+    .btn-primary span { position: relative; z-index: 1; }
+    .btn-primary .arrow { position: relative; z-index: 1; transition: transform .4s; display: inline-block; }
+    .btn-primary:hover .arrow { transform: translateX(6px); }
+    .btn-primary:hover {
+      transform: translateY(-3px) scale(1.02);
+      box-shadow: 0 20px 50px rgba(201, 169, 110, 0.3);
+    }
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      perspective: 1000px;
+    }
+    .hero-ring-display {
+      position: relative;
+      width: 100%;
+      max-width: 540px;
+      aspect-ratio: 1/1;
+      transform-style: preserve-3d;
+      animation: floatRing 6s ease-in-out infinite;
+    }
+    @keyframes floatRing {
+      0%, 100% { transform: translateY(0px) rotateY(-5deg); }
+      50% { transform: translateY(-15px) rotateY(5deg); }
+    }
+    .hero-ring-display .ring-main {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 120px rgba(201, 169, 110, 0.08);
+      border: 2px solid rgba(201, 169, 110, 0.15);
+      transition: transform .8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+    .hero-ring-display:hover .ring-main {
+      transform: scale(1.02) rotateY(5deg);
+    }
+    .hero-ring-display .ring-glow {
+      position: absolute;
+      inset: -40px;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(201, 169, 110, 0.15) 0%, transparent 70%);
+      animation: glowPulse 3s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .hero-ring-display .ring-glow-2 {
+      position: absolute;
+      inset: 20%;
+      border-radius: 50%;
+      background: radial-gradient(ellipse, rgba(201, 169, 110, 0.05) 0%, transparent 70%);
+      animation: glowPulse 4s ease-in-out infinite reverse;
+      pointer-events: none;
+    }
+    .sparkle {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      pointer-events: none;
+    }
+    .sparkle::before {
+      content: '✦';
+      font-size: 14px;
+      color: var(--gold-light);
+      opacity: 0.3;
+      animation: sparkleAnim 2.5s ease-in-out infinite;
+      display: block;
+      text-shadow: 0 0 20px var(--gold-glow);
+    }
+    .sparkle:nth-child(2) { top: 8%; right: 12%; animation-delay: 0.3s; }
+    .sparkle:nth-child(2)::before { font-size: 10px; }
+    .sparkle:nth-child(3) { bottom: 15%; left: 8%; animation-delay: 0.8s; }
+    .sparkle:nth-child(3)::before { font-size: 16px; }
+    .sparkle:nth-child(4) { top: 35%; right: -2%; animation-delay: 1.2s; }
+    .sparkle:nth-child(4)::before { font-size: 8px; }
+    .sparkle:nth-child(5) { bottom: 8%; right: 18%; animation-delay: 1.8s; }
+    .sparkle:nth-child(5)::before { font-size: 12px; }
+    .sparkle:nth-child(6) { top: 18%; left: 5%; animation-delay: 0.5s; }
+    .sparkle:nth-child(6)::before { font-size: 9px; }
+    .sparkle:nth-child(7) { top: 55%; right: 8%; animation-delay: 2.2s; }
+    .sparkle:nth-child(7)::before { font-size: 11px; }
+    .sparkle:nth-child(8) { bottom: 35%; left: -3%; animation-delay: 1.5s; }
+    .sparkle:nth-child(8)::before { font-size: 7px; }
+    @keyframes sparkleAnim {
+      0%, 100% { opacity: 0.2; transform: scale(0.8) rotate(0deg); }
+      50% { opacity: 1; transform: scale(1.4) rotate(180deg); }
+    }
+    .hero-badge {
+      position: absolute;
+      z-index: 5;
+      background: rgba(20, 14, 9, 0.7);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(201, 169, 110, 0.15);
+      padding: 16px 22px;
+      border-radius: 4px;
+      color: #fff;
+    }
+    .hero-badge .number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 30px;
+      font-weight: 600;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+    }
+    .hero-badge .label {
+      font-size: 9px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(255, 253, 249, 0.4);
+      margin-top: 2px;
+    }
+    .hero-badge-1 { bottom: 12%; right: -8%; animation: floatBadge 4s ease-in-out infinite; }
+    .hero-badge-2 { top: 12%; left: -8%; animation: floatBadge 4s ease-in-out infinite 1.5s; }
+    .hero-badge-3 { bottom: 25%; left: 5%; animation: floatBadge 4s ease-in-out infinite 3s; padding: 12px 18px; }
+    .hero-badge-3 .number { font-size: 22px; }
+    @keyframes floatBadge {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+    }
+    .scroll-indicator {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      color: rgba(255, 253, 249, 0.2);
+      font-size: 8px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      animation: bounceDown 2.5s ease-in-out infinite;
+    }
+    .scroll-indicator .mouse {
+      width: 22px;
+      height: 34px;
+      border: 2px solid rgba(255, 253, 249, 0.15);
+      border-radius: 12px;
+      position: relative;
+    }
+    .scroll-indicator .mouse .wheel {
+      width: 4px;
+      height: 8px;
+      background: var(--gold);
+      border-radius: 3px;
+      position: absolute;
+      top: 6px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: scrollWheel 1.8s ease-in-out infinite;
+    }
+    @keyframes scrollWheel {
+      0% { opacity: 1; transform: translateX(-50%) translateY(0); }
+      100% { opacity: 0; transform: translateX(-50%) translateY(16px); }
+    }
+    @keyframes bounceDown {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(6px); }
+    }
+
+    /* ==============================================================
+       SIGNATURE COLLECTIONS
+       ============================================================== */
+    .collections {
+      position: relative;
+      padding: 80px 0 100px;
+      background: var(--cream);
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .collections .wrap { padding: 0 60px; }
+    .collections-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 50px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .collections-header .left .eyebrow {
+      margin-bottom: 6px;
+      letter-spacing: 0.3em;
+      color: var(--terracotta-dark);
+    }
+    .collections-header h2 {
+      font-size: 42px;
+      font-weight: 500;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .collections-header .right {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    .collections-header .right .link {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--terracotta-dark);
+      border-bottom: 1.5px solid var(--terracotta-dark);
+      padding-bottom: 4px;
+      transition: 0.2s;
+      white-space: nowrap;
+    }
+    .collections-header .right .link:hover {
+      color: var(--brown-900);
+      border-color: var(--brown-900);
+    }
+    .collections-header .right .nav-arrows {
+      display: flex;
+      gap: 12px;
+      margin-left: 10px;
+    }
+    .collections-header .right .nav-arrows button {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--white);
+      transition: 0.25s;
+      color: var(--brown-700);
+    }
+    .collections-header .right .nav-arrows button:hover {
+      background: var(--brown-900);
+      color: #fff;
+      border-color: var(--brown-900);
+      transform: scale(1.05);
+    }
+
+    .collection-slider {
+      overflow: hidden;
+      position: relative;
+      border-radius: 12px;
+    }
+    .collection-track {
+      display: flex;
+      gap: 24px;
+      transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: transform;
+    }
+    .collection-card {
+      flex: 0 0 calc(33.333% - 16px);
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      min-height: 480px;
+      background: #d4c5b5;
+      transform: scale(1);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.04);
+    }
+    .collection-card:hover {
+      transform: scale(1.02);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+      z-index: 2;
+    }
+    .collection-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+      transition: transform 0.7s ease;
+    }
+    .collection-card:hover img { transform: scale(1.08); }
+    .collection-card .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(20, 14, 9, 0.65) 0%, rgba(20, 14, 9, 0.05) 55%);
+      z-index: 1;
+    }
+    .collection-label {
+      position: absolute;
+      bottom: 28px;
+      left: 28px;
+      z-index: 2;
+      color: #fff;
+    }
+    .collection-label .cname {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      line-height: 1;
+      margin-bottom: 4px;
+      text-shadow: 0 2px 12px rgba(0, 0, 0, 0.3);
+    }
+    .collection-label .ctag {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.85;
+      font-weight: 300;
+      text-shadow: 0 1px 8px rgba(0, 0, 0, 0.3);
+    }
+    .collection-card .explore-btn {
+      position: absolute;
+      bottom: 28px;
+      right: 28px;
+      z-index: 2;
+      background: rgba(255, 253, 249, 0.12);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 253, 249, 0.18);
+      color: #fff;
+      padding: 10px 22px;
+      font-size: 10px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 400;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity 0.4s ease, transform 0.4s ease, background 0.3s;
+      cursor: pointer;
+    }
+    .collection-card:hover .explore-btn {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .collection-card .explore-btn:hover {
+      background: rgba(255, 253, 249, 0.25);
+      border-color: rgba(255, 253, 249, 0.5);
+    }
+    .collection-card .explore-btn svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      stroke-width: 2;
+    }
+
+    @media (max-width: 1100px) {
+      .collection-card { flex: 0 0 calc(50% - 12px); min-height: 360px; }
+      .collections .wrap { padding: 0 30px; }
+    }
+    @media (max-width: 700px) {
+      .collection-card { flex: 0 0 100%; min-height: 300px; }
+      .collections-header h2 { font-size: 30px; }
+      .collections-header .right .nav-arrows { display: none; }
+      .collection-card .explore-btn { opacity: 1; transform: translateY(0); background: rgba(0, 0, 0, 0.3); }
+    }
+    @media (max-width: 600px) {
+      .hero-content { grid-template-columns: 1fr; padding: 140px 30px 80px; gap: 30px; }
+      .hero-copy h1 { font-size: 38px; }
+      .hero-copy h1 .sub-text { font-size: 16px; }
+      .hero-actions { flex-direction: column; align-items: flex-start; gap: 16px; }
+      .btn-primary { padding: 14px 28px; font-size: 10px; }
+      .hero-ring-display { max-width: 280px; }
+      .hero-badge-1 { padding: 12px 16px; }
+      .hero-badge-1 .number { font-size: 22px; }
+      .hero-badge-2 { padding: 10px 14px; }
+      .hero-badge-2 .number { font-size: 18px; }
+      .sparkle { display: none; }
+      .scroll-indicator { display: none; }
+      .hero-copy p { font-size: 14px; }
+      .hero-bg-image { animation: none; }
+      nav { display: none; }
+      header { padding: 12px 24px; }
+      header.scrolled { padding: 8px 24px; }
+      .collections { padding: 50px 0 60px; }
+      .collections-header { flex-direction: column; align-items: flex-start; gap: 12px; }
+    }
+
+    /* ===== CRAFTSMANSHIP ===== */
+    .craft-wow {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      align-items: stretch;
+      background: var(--brown-900);
+      overflow: hidden;
+      border-radius: 0;
+      min-height: 550px;
+      color: #fff;
+    }
+    .craft-wow .craft-media-wow {
+      position: relative;
+      overflow: hidden;
+      background: #1a120e;
+    }
+    .craft-wow .craft-media-wow video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      position: absolute;
+      inset: 0;
+    }
+    .craft-wow .craft-overlay-glow {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(20, 14, 9, 0.3) 0%, rgba(20, 14, 9, 0.1) 60%);
+      z-index: 1;
+      pointer-events: none;
+    }
+    .craft-wow .craft-content-wow {
+      padding: 60px 70px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: linear-gradient(145deg, #1f1610, #120d09);
+      border-left: 1px solid rgba(201, 169, 110, 0.1);
+      position: relative;
+      z-index: 2;
+    }
+    .craft-wow .craft-content-wow .eyebrow {
+      color: var(--gold);
+      letter-spacing: 0.35em;
+      font-weight: 400;
+      margin-bottom: 12px;
+      opacity: 0.8;
+    }
+    .craft-wow .craft-content-wow h2 {
+      font-size: 44px;
+      font-weight: 500;
+      line-height: 1.1;
+      margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+    .craft-wow .craft-content-wow h2 .gold-accent {
+      background: linear-gradient(135deg, var(--gold-light), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .craft-wow .craft-content-wow p {
+      font-size: 16px;
+      color: rgba(255, 253, 249, 0.6);
+      max-width: 420px;
+      line-height: 1.7;
+      margin-bottom: 32px;
+      font-weight: 300;
+    }
+    .craft-wow .craft-features-wow {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px 30px;
+      margin-bottom: 32px;
+    }
+    .craft-wow .craft-features-wow .feature {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 13px;
+      letter-spacing: 0.04em;
+      color: rgba(255, 253, 249, 0.7);
+      font-weight: 300;
+    }
+    .craft-wow .craft-features-wow .feature svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--gold);
+      flex: 0 0 auto;
+    }
+    .craft-wow .craft-link-wow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--gold);
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      border-bottom: 1px solid var(--gold);
+      padding-bottom: 6px;
+      width: fit-content;
+      transition: all 0.3s ease;
+      font-weight: 400;
+    }
+    .craft-wow .craft-link-wow:hover {
+      color: #fff;
+      border-color: #fff;
+      gap: 18px;
+    }
+    .craft-wow .craft-link-wow svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      stroke-width: 2;
+    }
+    .craft-wow::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: 20%;
+      width: 60%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0.4;
+      z-index: 3;
+    }
+    @media (max-width: 1000px) {
+      .craft-wow { grid-template-columns: 1fr; min-height: auto; }
+      .craft-wow .craft-media-wow { min-height: 380px; }
+      .craft-wow .craft-content-wow { padding: 40px 30px; border-left: none; }
+      .craft-wow .craft-content-wow h2 { font-size: 34px; }
+      .craft-wow .craft-features-wow { grid-template-columns: 1fr 1fr; gap: 12px; }
+    }
+    @media (max-width: 600px) {
+      .craft-wow .craft-content-wow h2 { font-size: 26px; }
+      .craft-wow .craft-features-wow { grid-template-columns: 1fr; }
+      .craft-wow .craft-media-wow { min-height: 240px; }
+      .craft-wow .craft-content-wow { padding: 28px 20px; }
+    }
+
+    /* ==============================================================
+       OUR STORY
+       ============================================================== */
+    .story-immersive {
+      padding: 100px 0 120px;
+      background: var(--cream);
+      position: relative;
+      overflow: hidden;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+    .story-immersive::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(201, 169, 110, 0.04) 0%, transparent 50%),
+        radial-gradient(circle at 90% 80%, rgba(201, 169, 110, 0.03) 0%, transparent 50%);
+      pointer-events: none;
+    }
+    .story-immersive .wrap { position: relative; z-index: 2; }
+
+    .story-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 70px;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+    .story-header .left { flex: 1; }
+    .story-header .left .eyebrow {
+      color: var(--terracotta-dark);
+      letter-spacing: 0.35em;
+      font-weight: 400;
+      margin-bottom: 10px;
+      opacity: 0.8;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .story-header .left .eyebrow .line-gold {
+      display: inline-block;
+      width: 60px;
+      height: 1.5px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+    }
+    .story-header .left h2 {
+      font-size: 56px;
+      font-weight: 500;
+      letter-spacing: -0.03em;
+      line-height: 1.05;
+    }
+    .story-header .left h2 .gold-accent {
+      background: linear-gradient(135deg, var(--terracotta-dark), var(--gold));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .story-header .right {
+      max-width: 420px;
+    }
+    .story-header .right p {
+      font-size: 17px;
+      color: var(--brown-700);
+      line-height: 1.8;
+      font-weight: 300;
+      opacity: 0.8;
+    }
+    .story-header .right .highlight-stat {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+    }
+    .story-header .right .stat-item {
+      display: flex;
+      flex-direction: column;
+    }
+    .story-header .right .stat-item .number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--terracotta-dark);
+      line-height: 1;
+    }
+    .story-header .right .stat-item .label {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--brown-500);
+      margin-top: 4px;
+    }
+
+    .journey-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 70px;
+    }
+    .journey-hero-image {
+      position: relative;
+      border-radius: 20px;
+      overflow: hidden;
+      min-height: 500px;
+      background: #d4c5b5;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.06);
+    }
+    .journey-hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      inset: 0;
+      transition: transform 0.8s ease;
+    }
+    .journey-hero-image:hover img { transform: scale(1.04); }
+    .journey-hero-image .hero-overlay-story {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(20, 14, 9, 0.4) 0%, rgba(20, 14, 9, 0.05) 60%);
+      z-index: 1;
+    }
+    .journey-hero-image .floating-badge-story {
+      position: absolute;
+      bottom: 30px;
+      left: 30px;
+      z-index: 2;
+      background: rgba(255, 253, 249, 0.12);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 253, 249, 0.15);
+      padding: 16px 24px;
+      border-radius: 12px;
+      color: #fff;
+    }
+    .journey-hero-image .floating-badge-story .big {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--gold);
+    }
+    .journey-hero-image .floating-badge-story .small {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      opacity: 0.6;
+      margin-top: 2px;
+    }
+
+    .era-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .era-card {
+      display: grid;
+      grid-template-columns: 80px 1fr auto;
+      align-items: center;
+      gap: 20px;
+      padding: 20px 24px;
+      background: rgba(255, 253, 249, 0.5);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 16px;
+      border: 1px solid rgba(255, 253, 249, 0.6);
+      transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+      cursor: default;
+      position: relative;
+      overflow: hidden;
+    }
+    .era-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(201, 169, 110, 0.03), transparent);
+      opacity: 0;
+      transition: opacity 0.4s;
+      border-radius: 16px;
+    }
+    .era-card:hover {
+      transform: translateX(10px) scale(1.01);
+      background: rgba(255, 253, 249, 0.8);
+      border-color: var(--gold);
+      box-shadow: 0 12px 40px rgba(201, 169, 110, 0.08);
+    }
+    .era-card:hover::before { opacity: 1; }
+    .era-card .era-year {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--terracotta-dark);
+      letter-spacing: 0.02em;
+    }
+    .era-card .era-content { display: flex; flex-direction: column; }
+    .era-card .era-content .era-title {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--brown-700);
+    }
+    .era-card .era-content .era-desc {
+      font-size: 13px;
+      color: var(--brown-500);
+      font-weight: 300;
+      margin-top: 2px;
+    }
+    .era-card .era-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(201, 169, 110, 0.1);
+      border: 1px solid rgba(201, 169, 110, 0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--terracotta-dark);
+      transition: all 0.4s;
+      flex: 0 0 auto;
+    }
+    .era-card:hover .era-icon {
+      background: var(--gold);
+      color: #fff;
+      border-color: var(--gold);
+      transform: scale(1.1);
+    }
+    .era-card .era-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: currentColor;
+      stroke-width: 1.5;
+    }
+    .era-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 60%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255, 253, 249, 0.3), transparent);
+      transform: skewX(-25deg);
+      transition: left 0.7s ease;
+      pointer-events: none;
+      border-radius: 16px;
+    }
+    .era-card:hover::after { left: 150%; }
+
+    .story-cta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 40px;
+      border-top: 1px solid var(--line);
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .story-cta .cta-text {
+      font-size: 14px;
+      color: var(--brown-700);
+      font-weight: 300;
+      letter-spacing: 0.02em;
+    }
+    .story-cta .cta-text strong { color: var(--brown-900); font-weight: 500; }
+    .story-cta .cta-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 12px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--terracotta-dark);
+      border-bottom: 1.5px solid var(--terracotta-dark);
+      padding-bottom: 6px;
+      transition: all 0.3s;
+    }
+    .story-cta .cta-link:hover {
+      color: var(--brown-900);
+      border-color: var(--brown-900);
+      gap: 18px;
+    }
+    .story-cta .cta-link svg {
+      width: 16px;
+      height: 16px;
+      stroke: currentColor;
+      stroke-width: 2;
+    }
+
+    @media (max-width: 1100px) {
+      .story-header .left h2 { font-size: 42px; }
+      .journey-grid { grid-template-columns: 1fr; gap: 30px; }
+      .journey-hero-image { min-height: 320px; }
+    }
+    @media (max-width: 700px) {
+      .story-immersive { padding: 60px 0 70px; }
+      .story-header { flex-direction: column; align-items: flex-start; gap: 20px; }
+      .story-header .left h2 { font-size: 32px; }
+      .story-header .right { max-width: 100%; }
+      .story-header .right .highlight-stat { flex-wrap: wrap; gap: 16px; }
+      .era-card { grid-template-columns: 60px 1fr auto; padding: 16px 18px; gap: 14px; }
+      .era-card .era-year { font-size: 22px; }
+      .era-card .era-content .era-title { font-size: 12px; }
+      .era-card .era-content .era-desc { font-size: 11px; }
+      .story-cta { flex-direction: column; align-items: flex-start; gap: 16px; }
+    }
+    @media (max-width: 480px) {
+      .era-card { grid-template-columns: 1fr; text-align: center; gap: 8px; padding: 20px 16px; }
+      .era-card .era-year { font-size: 20px; }
+      .era-card .era-icon { margin: 0 auto; }
+      .era-card:hover { transform: translateX(0) scale(1.02); }
+      .story-header .left h2 { font-size: 26px; }
+    }
+
+    /* ==============================================================
+       THE EDIT
+       ============================================================== */
+    .creations-futuristic {
+      padding: 80px 0 100px;
+      background: linear-gradient(145deg, #f5efe6 0%, #e8ddcf 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .creations-futuristic::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -20%;
+      width: 140%;
+      height: 140%;
+      background: radial-gradient(circle at 30% 40%, rgba(201, 169, 110, 0.04) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .creations-futuristic .wrap { position: relative; z-index: 2; }
+
+    .futuristic-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .futuristic-header .left .eyebrow {
+      color: var(--gold);
+      letter-spacing: 0.4em;
+      font-weight: 400;
+      font-size: 12px;
+      text-shadow: 0 0 30px rgba(201, 169, 110, 0.2);
+    }
+    .futuristic-header .left h2 {
+      font-size: 42px;
+      font-weight: 500;
+      letter-spacing: -0.02em;
+      background: linear-gradient(135deg, #241a12 40%, #8f5228 80%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .futuristic-header .right {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+    .futuristic-header .right .view-all-glass {
+      font-size: 12px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--brown-700);
+      padding: 10px 24px;
+      border-radius: 40px;
+      background: rgba(255, 253, 249, 0.3);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(201, 169, 110, 0.2);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    }
+    .futuristic-header .right .view-all-glass:hover {
+      background: rgba(201, 169, 110, 0.15);
+      border-color: var(--gold);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(201, 169, 110, 0.15);
+    }
+    .futuristic-header .right .carousel-dots {
+      display: flex;
+      gap: 10px;
+    }
+    .futuristic-header .right .carousel-dots .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(36, 26, 18, 0.15);
+      transition: all 0.4s ease;
+      cursor: pointer;
+    }
+    .futuristic-header .right .carousel-dots .dot.active {
+      background: var(--gold);
+      width: 28px;
+      border-radius: 10px;
+      box-shadow: 0 0 20px rgba(201, 169, 110, 0.3);
+    }
+
+    .products-glass {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      perspective: 1200px;
+    }
+    .product-glass-card {
+      background: rgba(255, 253, 249, 0.25);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 253, 249, 0.4);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(255, 253, 249, 0.6) inset;
+      transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+      transform-style: preserve-3d;
+      position: relative;
+    }
+    .product-glass-card:hover {
+      transform: translateY(-12px) rotateX(2deg) rotateY(2deg) scale(1.02);
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.08), 0 0 0 1px rgba(201, 169, 110, 0.3) inset;
+      background: rgba(255, 253, 249, 0.4);
+    }
+    .product-glass-card .glass-media {
+      position: relative;
+      aspect-ratio: 1/0.85;
+      overflow: hidden;
+      background: #d4c5b5;
+      border-radius: 24px 24px 0 0;
+    }
+    .product-glass-card .glass-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+    .product-glass-card:hover .glass-media img { transform: scale(1.08); }
+    .product-glass-card .glass-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: rgba(255, 253, 249, 0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      padding: 4px 16px;
+      border-radius: 30px;
+      font-size: 9px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #fff;
+      font-weight: 500;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    }
+    .product-glass-card .glass-wish {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 253, 249, 0.2);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+    }
+    .product-glass-card .glass-wish:hover {
+      background: rgba(255, 253, 249, 0.4);
+      transform: scale(1.1);
+    }
+    .product-glass-card .glass-wish.active svg {
+      fill: var(--terracotta-dark);
+      stroke: var(--terracotta-dark);
+    }
+    .product-glass-card .glass-info { padding: 22px 24px 24px; }
+    .product-glass-card .glass-sku {
+      font-size: 10px;
+      letter-spacing: 0.12em;
+      color: var(--brown-500);
+      opacity: 0.6;
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .product-glass-card .glass-name {
+      font-size: 15px;
+      letter-spacing: 0.04em;
+      font-weight: 500;
+      color: var(--brown-900);
+      margin-bottom: 6px;
+    }
+    .product-glass-card .glass-price {
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--terracotta-dark);
+      letter-spacing: 0.02em;
+      margin-bottom: 16px;
+    }
+    .product-glass-card .glass-actions {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .product-glass-card .glass-add {
+      background: linear-gradient(135deg, var(--gold), var(--terracotta-dark));
+      color: #fff;
+      padding: 12px 28px;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border-radius: 40px;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      font-weight: 500;
+      box-shadow: 0 8px 24px rgba(201, 169, 110, 0.2);
+      flex: 1;
+    }
+    .product-glass-card .glass-add:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 34px rgba(201, 169, 110, 0.3);
+    }
+    .product-glass-card .glass-view {
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--brown-700);
+      border-bottom: 1px solid var(--brown-500);
+      padding-bottom: 3px;
+      transition: all 0.3s ease;
+    }
+    .product-glass-card .glass-view:hover {
+      color: var(--terracotta-dark);
+      border-color: var(--terracotta-dark);
+    }
+    .product-glass-card::after {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: 20%;
+      width: 60%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity 0.6s ease;
+      border-radius: 0 0 50% 50%;
+    }
+    .product-glass-card:hover::after { opacity: 1; }
+
+    @media (max-width: 1000px) {
+      .products-glass { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 650px) {
+      .products-glass { grid-template-columns: 1fr; }
+      .futuristic-header .left h2 { font-size: 30px; }
+      .futuristic-header .right .carousel-dots { display: none; }
+    }
+
+    /* ---- trust & private ---- */
+    .trust {
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 30px 20px;
+      border-right: 1px solid var(--line);
+    }
+    .trust-item:last-child { border-right: none; }
+    .trust-item .ic {
+      width: 26px;
+      height: 26px;
+      color: var(--terracotta-dark);
+      flex: 0 0 auto;
+    }
+    .trust-item .t-title {
+      font-size: 12px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+    .trust-item .t-sub {
+      font-size: 11.5px;
+      color: var(--brown-500);
+      margin-top: 2px;
+    }
+
+    .private {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      background: linear-gradient(120deg, #f2e4d4, #ecd7c2);
+    }
+    .private-copy {
+      padding: 70px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .private-copy h2 {
+      font-size: 32px;
+      font-weight: 500;
+      margin: 8px 0 14px;
+    }
+    .private-copy p {
+      font-size: 14.5px;
+      color: var(--brown-700);
+      max-width: 360px;
+      margin-bottom: 24px;
+    }
+    .private-copy .link {
+      font-size: 11.5px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--terracotta-dark);
+      border-bottom: 1px solid var(--terracotta-dark);
+      padding-bottom: 3px;
+      width: fit-content;
+    }
+    .private-contact {
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--brown-700);
+    }
+    .private-contact div { display: flex; align-items: center; gap: 10px; }
+    .private-media {
+      position: relative;
+      min-height: 340px;
+      overflow: hidden;
+      background: #c4b5a5;
+    }
+    .private-media img {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      inset: 0;
+      object-fit: cover;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(20, 14, 9, 0.92);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 10000;
+      padding: 40px;
+    }
+    .modal.open { display: flex; }
+    .modal video {
+      width: 100%;
+      max-width: 900px;
+      max-height: 80vh;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 4px;
+    }
+    .modal-close {
+      position: absolute;
+      top: 30px;
+      right: 40px;
+      color: #fff;
+      font-size: 14px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      opacity: 0.6;
+      transition: opacity .3s;
+    }
+    .modal-close:hover { opacity: 1; }
+
+    .play-film-hero {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: rgba(255, 253, 249, 0.7);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: color 0.3s;
+      padding: 8px 0;
+    }
+    .play-film-hero:hover { color: #fff; }
+    .play-circle-hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(255, 253, 249, 0.2);
+      transition: all 0.3s;
+    }
+    .play-film-hero:hover .play-circle-hero {
+      border-color: var(--gold);
+      background: rgba(201, 169, 110, 0.08);
+    }
+
+    @media(max-width:1100px) {
+      .trust { grid-template-columns: repeat(2, 1fr); }
+      .trust-item:nth-child(2) { border-right: none; }
+      .private { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ==============================================================
+       ✦ CINEMATIC GOLD PRELOADER ✦
+       ============================================================== -->
+  <div id="preloader">
+    <!-- Background Glow -->
+    <div class="preloader-bg-glow"></div>
+
+    <!-- Rotating Rings -->
+    <div class="preloader-ring"></div>
+    <div class="preloader-ring"></div>
+    <div class="preloader-ring"></div>
+
+    <!-- Glowing Ring (draws itself) -->
+    <div class="preloader-glow-ring"></div>
+
+    <!-- Particle Canvas -->
+    <canvas id="preloaderParticles"></canvas>
+
+    <!-- Logo -->
+    <div class="preloader-logo-wrapper">
+      <!-- Brand Mark -->
+      <div class="preloader-mark">
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20 2 L34 16 L20 38 L6 16 L20 2Z" stroke="#c9a96e" stroke-width="1.2" fill="rgba(201,169,110,0.05)" />
+          <path d="M20 10 L28 16 L20 30 L12 16 L20 10Z" stroke="#c9a96e" stroke-width="0.8" fill="rgba(201,169,110,0.03)" />
+          <circle cx="20" cy="16" r="2" fill="#c9a96e" opacity="0.3" />
+        </svg>
+      </div>
+
+      <!-- SVG Text with Stroke Animation -->
+<svg class="preloader-svg-text" viewBox="0 0 520 80" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f6e8c3" />
+      <stop offset="35%" stop-color="#c9a96e" />
+      <stop offset="65%" stop-color="#b06a3a" />
+      <stop offset="100%" stop-color="#c9a96e" />
+    </linearGradient>
+  </defs>
+  
+  <!-- "ISMAIL JEWELLERY" — Ek Line Mein -->
+  <text x="15" y="52" font-family="'Cormorant Garamond', serif" font-size="36" font-weight="600" letter-spacing="4" fill="none">
+    <!-- ISMAIL -->
+    <tspan class="char">I</tspan>
+    <tspan class="char">S</tspan>
+    <tspan class="char">M</tspan>
+    <tspan class="char">A</tspan>
+    <tspan class="char">I</tspan>
+    <tspan class="char">L</tspan>
+    
+    <!-- Space -->
+    <tspan class="char" dx="12"> </tspan>
+    <tspan class="char" dx="12"> </tspan>
+    
+    <!-- JEWELLERY -->
+    <tspan class="char" dx="4">J</tspan>
+    <tspan class="char">E</tspan>
+    <tspan class="char">W</tspan>
+    <tspan class="char">E</tspan>
+    <tspan class="char">L</tspan>
+    <tspan class="char">L</tspan>
+    <tspan class="char">E</tspan>
+    <tspan class="char">R</tspan>
+    <tspan class="char">Y</tspan>
+  </text>
+  
+  <!-- Decorative line -->
+  <line x1="20" y1="70" x2="500" y2="70" stroke="url(#goldGrad)" stroke-width="0.8" opacity="0.2" stroke-dasharray="4 4" />
+</svg>
+
+      <!-- Shimmer overlay -->
+      <div class="preloader-shimmer-overlay"></div>
+
+      <!-- Tagline -->
+      <div class="preloader-tagline">Timeless in Every Way</div>
+    </div>
+  </div>
+
+  <!-- ==============================================================
+       MAIN SITE CONTENT
+       ============================================================== -->
+  <div class="announce"><span class="marquee">✦ Complimentary International Shipping on All Orders ✦ &nbsp;✦ Lifetime Warranty on Every Piece ✦ &nbsp;✦ GIA Certified Diamonds ✦</span></div>
+
+  <header id="header">
+    <div class="logo">ISMAIL<small>JEWELLERY</small></div>
+    <nav>
+      <a href="#collections">Collections</a>
+      <a href="#shop">Shop</a>
+      <a href="#story">Our Story</a>
+      <a href="#craft">Craftsmanship</a>
+      <a href="#experience">Experience</a>
+    </nav>
+    <div class="icons">
+      <button aria-label="Search"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></button>
+      <button aria-label="Wishlist"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button>
+      <button aria-label="Account"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7"/></svg></button>
+      <button class="bag-label" id="bagBtn"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg> BAG (<span id="bagCount">0</span>)</button>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <img class="hero-bg-image" src="https://images.unsplash.com/photo-1601121141418-c1caa10a2a0b?q=80&w=870&auto=format&fit=crop" alt="Dubai luxury">
+    <div class="hero-overlay"></div>
+    <div class="hero-glow-1"></div>
+    <div class="hero-glow-2"></div>
+    <div class="floating-particle"></div><div class="floating-particle"></div><div class="floating-particle"></div>
+    <div class="floating-particle"></div><div class="floating-particle"></div><div class="floating-particle"></div>
+    <div class="floating-particle"></div><div class="floating-particle"></div>
+    <canvas id="particleCanvas"></canvas>
+    <div class="hero-content">
+      <div class="hero-copy">
+        <div class="eyebrow"><span class="line"></span> Since 1981 — Crafted to Captivate</div>
+        <h1 class="serif">Timeless<br>in <span class="highlight">Every Way</span><span class="sub-text">— A Legacy of Excellence</span></h1>
+        <p>For more than four decades, Ismail Jewellery has been creating exceptional pieces that celebrate life's most precious moments with unparalleled artistry.</p>
+        <div class="hero-actions">
+          <a href="#collections" class="btn-primary"><span>Discover the Collection</span><span class="arrow">→</span></a>
+          <button class="play-film-hero" id="playFilmBtn"><span class="play-circle-hero"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>Watch Film</button>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-ring-display">
+          <div class="ring-glow"></div><div class="ring-glow-2"></div>
+          <img class="ring-main" src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&h=600&fit=crop" alt="Luxury diamond ring">
+          <span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span>
+          <span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span>
+          <div class="hero-badge hero-badge-1"><span class="number">18K</span><span class="label">Gold • Certified</span></div>
+          <div class="hero-badge hero-badge-2"><span class="number">40+</span><span class="label">Years of Excellence</span></div>
+          <div class="hero-badge hero-badge-3"><span class="number">✦</span><span class="label">GIA Certified</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-indicator"><div class="mouse"><div class="wheel"></div></div><span>Scroll to explore</span></div>
+  </section>
+
+  <!-- COLLECTIONS -->
+  <section class="collections" id="collections">
+    <div class="wrap">
+      <div class="collections-header">
+        <div class="left"><div class="eyebrow">Signature</div><h2 class="serif">Collections</h2></div>
+        <div class="right">
+          <a href="#" class="link">Explore All →</a>
+          <div class="nav-arrows">
+            <button id="colPrev" aria-label="Previous"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg></button>
+            <button id="colNext" aria-label="Next"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg></button>
+          </div>
+        </div>
+      </div>
+      <div class="collection-slider">
+        <div class="collection-track" id="collectionTrack">
+          <div class="collection-card"><img src="https://images.unsplash.com/photo-1694062045776-f48d9b6de57e?q=80&w=387&auto=format&fit=crop" alt="Belle"><div class="overlay"></div><div class="collection-label"><div class="cname serif">BELLE</div><div class="ctag">Timeless Elegance</div></div><button class="explore-btn">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button></div>
+          <div class="collection-card"><img src="https://images.unsplash.com/photo-1583603306867-27d180666f89?q=80&w=869&auto=format&fit=crop" alt="Meraki"><div class="overlay"></div><div class="collection-label"><div class="cname serif">MERAKI</div><div class="ctag">Art of Details</div></div><button class="explore-btn">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button></div>
+          <div class="collection-card"><img src="https://plus.unsplash.com/premium_photo-1724762183134-c17cf5f5bed2?q=80&w=870&auto=format&fit=crop" alt="Clea"><div class="overlay"></div><div class="collection-label"><div class="cname serif">CLEA</div><div class="ctag">Modern Sophistication</div></div><button class="explore-btn">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button></div>
+          <div class="collection-card"><img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=600&h=800&fit=crop" alt="Aura"><div class="overlay"></div><div class="collection-label"><div class="cname serif">AURA</div><div class="ctag">Radiant Brilliance</div></div><button class="explore-btn">Explore <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE EDIT -->
+  <section class="creations-futuristic" id="shop">
+    <div class="wrap">
+      <div class="futuristic-header">
+        <div class="left"><div class="eyebrow">✦ The Edit</div><h2 class="serif">Our Finest Creations</h2></div>
+        <div class="right">
+          <a href="#" class="view-all-glass">Explore All →</a>
+          <div class="carousel-dots" id="carouselDots">
+            <span class="dot active" data-index="0"></span>
+            <span class="dot" data-index="1"></span>
+            <span class="dot" data-index="2"></span>
+          </div>
+        </div>
+      </div>
+      <div class="products-glass" id="glassProductGrid">
+        <div class="product-glass-card" data-index="0">
+          <div class="glass-media"><img src="https://images.unsplash.com/photo-1631897817977-a1005c199b36?q=80&w=726&auto=format&fit=crop" alt="Bracelet"><span class="glass-badge">Best Seller</span><button class="glass-wish" data-wish><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button></div>
+          <div class="glass-info"><div class="glass-sku">BLI01463</div><div class="glass-name">Diamond Bracelet</div><div class="glass-price">AED 19,400</div><div class="glass-actions"><button class="glass-add" data-add>Add to Bag</button><a href="#" class="glass-view">Details</a></div></div>
+        </div>
+        <div class="product-glass-card" data-index="1">
+          <div class="glass-media"><img src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=700&h=600&fit=crop" alt="Ring"><span class="glass-badge">Exclusive</span><button class="glass-wish" data-wish><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button></div>
+          <div class="glass-info"><div class="glass-sku">BLI11789</div><div class="glass-name">Diamond Ring</div><div class="glass-price">AED 13,500</div><div class="glass-actions"><button class="glass-add" data-add>Add to Bag</button><a href="#" class="glass-view">Details</a></div></div>
+        </div>
+        <div class="product-glass-card" data-index="2">
+          <div class="glass-media"><img src="https://images.unsplash.com/photo-1743264385411-57c883bdc0ea?q=80&w=496&auto=format&fit=crop" alt="Necklace"><span class="glass-badge">New Arrival</span><button class="glass-wish" data-wish><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8z"/></svg></button></div>
+          <div class="glass-info"><div class="glass-sku">BLI06073</div><div class="glass-name">Diamond Necklace</div><div class="glass-price">AED 36,000</div><div class="glass-actions"><button class="glass-add" data-add>Add to Bag</button><a href="#" class="glass-view">Details</a></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CRAFTSMANSHIP -->
+  <section class="craft-wow" id="craft">
+    <div class="craft-media-wow">
+      <video autoplay loop muted playsinline><source src="101463-video-1080.mp4" type="video/mp4"></video>
+      <div class="craft-overlay-glow"></div>
+    </div>
+    <div class="craft-content-wow">
+      <div class="eyebrow">✦ Mastery in Motion</div>
+      <h2 class="serif">The Art Behind <br><span class="gold-accent">Every Masterpiece</span></h2>
+      <p>Every Ismail creation is brought to life by the hands of master artisans who pour their skill, passion and precision into each intricate detail. Watch the craft unfold.</p>
+      <div class="craft-features-wow">
+        <div class="feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="8" r="3.5"/><path d="M5 21c0-4 3-6.5 7-6.5S19 17 19 21"/></svg>Expert Artisans</div>
+        <div class="feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M6 3h12l3 6-9 12L3 9l3-6z"/><path d="M3 9h18M9 3l3 6 3-6"/></svg>Exceptional Materials</div>
+        <div class="feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Precision &amp; Passion</div>
+        <div class="feature"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9z"/></svg>Timeless Beauty</div>
+      </div>
+      <a href="#" class="craft-link-wow">Discover Our Craft <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+    </div>
+  </section>
+
+  <!-- OUR STORY -->
+  <section class="story-immersive" id="story">
+    <div class="wrap">
+      <div class="story-header">
+        <div class="left">
+          <div class="eyebrow"><span class="line-gold"></span> Our Story</div>
+          <h2 class="serif">A Legacy of Passion<br><span class="gold-accent">A Future of Perfection</span></h2>
+        </div>
+        <div class="right">
+          <p>Since 1981, we have been dedicated to creating exceptional jewellery in our in-house facility in Dubai. This is our journey of craftsmanship, trust, and timeless beauty.</p>
+          <div class="highlight-stat">
+            <div class="stat-item"><span class="number">40+</span><span class="label">Years of Excellence</span></div>
+            <div class="stat-item"><span class="number">18K</span><span class="label">Gold • Certified</span></div>
+            <div class="stat-item"><span class="number">✦</span><span class="label">GIA Certified</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="journey-grid">
+        <div class="journey-hero-image">
+          <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?w=900&h=700&fit=crop" alt="Ismail Jewellery heritage">
+          <div class="hero-overlay-story"></div>
+          <div class="floating-badge-story">
+            <div class="big">Since 1981</div>
+            <div class="small">Four Decades of Craftsmanship</div>
+          </div>
+        </div>
+
+        <div class="era-cards">
+          <div class="era-card">
+            <div class="era-year">1981</div>
+            <div class="era-content">
+              <div class="era-title">The Beginning</div>
+              <div class="era-desc">Founded with a vision to redefine luxury jewellery in Dubai</div>
+            </div>
+            <div class="era-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M3 7h11v8H3z"/><path d="M14 10h4l3 3v2h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="18" cy="18" r="1.6"/></svg></div>
+          </div>
+          <div class="era-card">
+            <div class="era-year">1990s</div>
+            <div class="era-content">
+              <div class="era-title">Growing With Trust</div>
+              <div class="era-desc">Earning the loyalty of families across the region</div>
+            </div>
+            <div class="era-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M6 3h12l3 6-9 12L3 9l3-6z"/></svg></div>
+          </div>
+          <div class="era-card">
+            <div class="era-year">2000s</div>
+            <div class="era-content">
+              <div class="era-title">Innovation &amp; Expansion</div>
+              <div class="era-desc">Bringing contemporary design to timeless traditions</div>
+            </div>
+            <div class="era-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 3l8 3v6c0 5-3.4 8.4-8 9-4.6-.6-8-4-8-9V6l8-3z"/></svg></div>
+          </div>
+          <div class="era-card">
+            <div class="era-year">2010s</div>
+            <div class="era-content">
+              <div class="era-title">Global Recognition</div>
+              <div class="era-desc">Celebrated by connoisseurs worldwide for exceptional quality</div>
+            </div>
+            <div class="era-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></div>
+          </div>
+          <div class="era-card">
+            <div class="era-year">2020s</div>
+            <div class="era-content">
+              <div class="era-title">Shaping The Future</div>
+              <div class="era-desc">Continuing our legacy with innovation and passion</div>
+            </div>
+            <div class="era-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path d="M12 21s-7-4.5-9.5-9A5.5 5.5 0 0 1 12 6a5.5 5.5 0 0 1 9.5 6c-2.5 4.5-9.5 9-9.5 9z"/></svg></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="story-cta">
+        <div class="cta-text">Our journey is <strong>crafted in gold</strong> — and we're just getting started.</div>
+        <a href="#experience" class="cta-link">Experience the Legacy <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section class="trust">
+    <div class="trust-item"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M3 7h11v8H3z"/><path d="M14 10h4l3 3v2h-7z"/><circle cx="7" cy="18" r="1.6"/><circle cx="18" cy="18" r="1.6"/></svg><div><div class="t-title">Free International</div><div class="t-sub">Shipping — On All Orders</div></div></div>
+    <div class="trust-item"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M6 3h12l3 6-9 12L3 9l3-6z"/></svg><div><div class="t-title">Certified Diamonds</div><div class="t-sub">GIA Certified</div></div></div>
+    <div class="trust-item"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><rect x="3" y="6" width="18" height="12" rx="1.5"/><path d="M3 10h18"/></svg><div><div class="t-title">Secure Payments</div><div class="t-sub">100% Secure</div></div></div>
+    <div class="trust-item"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M12 3l8 3v6c0 5-3.4 8.4-8 9-4.6-.6-8-4-8-9V6l8-3z"/></svg><div><div class="t-title">Lifetime Care</div><div class="t-sub">&amp; Warranty — For Peace of Mind</div></div></div>
+    <div class="trust-item"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3"><path d="M4 12a8 8 0 0 1 14-5"/><path d="M20 12a8 8 0 0 1-14 5"/><polyline points="18 3 18 7 14 7"/><polyline points="6 21 6 17 10 17"/></svg><div><div class="t-title">Easy Returns</div><div class="t-sub">&amp; Exchanges — Hassle Free</div></div></div>
+  </section>
+
+  <!-- PRIVATE VIEWING -->
+  <section class="private" id="experience">
+    <div class="private-copy">
+      <div class="eyebrow">Private Viewing</div>
+      <h2 class="serif">Designed Around You</h2>
+      <p>Book a private appointment and explore our collections in a personalized setting.</p>
+      <a href="#" class="link">Book an Appointment →</a>
+      <div class="private-contact">
+        <div>📞 +971 50 421 0089</div>
+        <div>✉️ sales@ismailjewellery.com</div>
+        <div>📍 Gold Souq, Deira, Dubai, UAE</div>
+      </div>
+    </div>
+    <div class="private-media"><img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?w=900&h=700&fit=crop" alt="Private viewing salon"></div>
+  </section>
+
+  <!-- VIDEO MODAL -->
+  <div class="modal" id="videoModal">
+    <button class="modal-close" id="closeModal">Close ✕</button>
+    <video id="modalVideo" controls><source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4" type="video/mp4"></video>
+  </div>
+
+  <script>
+    // ==============================================================
+    // ✦ CINEMATIC PRELOADER — FULL IMPLEMENTATION ✦
+    // ==============================================================
+
+    // ── Particle Burst System ──
+    const pCanvas = document.getElementById('preloaderParticles');
+    const pCtx = pCanvas.getContext('2d');
+    let pParticles = [];
+    let pBurstTriggered = false;
+    let pBurstStarted = false;
+    let pFadeComplete = false;
+
+    function resizeParticleCanvas() {
+      pCanvas.width = pCanvas.parentElement.offsetWidth;
+      pCanvas.height = pCanvas.parentElement.offsetHeight;
+    }
+    resizeParticleCanvas();
+    window.addEventListener('resize', resizeParticleCanvas);
+
+    class BurstParticle {
+      constructor(x, y) {
+        this.x = x;
+        this.y = y;
+        const angle = Math.random() * Math.PI * 2;
+        const speed = Math.random() * 8 + 3;
+        this.vx = Math.cos(angle) * speed;
+        this.vy = Math.sin(angle) * speed - 1.5;
+        this.size = Math.random() * 5 + 2;
+        this.life = 1;
+        this.decay = Math.random() * 0.008 + 0.006;
+        this.gravity = 0.08;
+        this.rotation = Math.random() * 360;
+        this.rotSpeed = (Math.random() - 0.5) * 0.1;
+        this.shape = Math.random() > 0.5 ? 'circle' : 'diamond';
+        this.hue = 35 + Math.random() * 20; // gold range
+        this.sat = 70 + Math.random() * 30;
+        this.light = 60 + Math.random() * 30;
+      }
+
+      update() {
+        this.x += this.vx;
+        this.y += this.vy;
+        this.vy += this.gravity;
+        this.vx *= 0.995;
+        this.vy *= 0.995;
+        this.life -= this.decay;
+        this.rotation += this.rotSpeed;
+        this.size *= 0.998;
+        return this.life > 0;
+      }
+
+      draw(ctx) {
+        const alpha = this.life * 0.9;
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.rotation);
+        const gradient = ctx.createRadialGradient(0, 0, 0, 0, 0, this.size);
+        gradient.addColorStop(0, `hsla(${this.hue}, ${this.sat}%, ${this.light}%, ${alpha})`);
+        gradient.addColorStop(0.5, `hsla(${this.hue}, ${this.sat}%, ${this.light - 20}%, ${alpha * 0.8})`);
+        gradient.addColorStop(1, `hsla(${this.hue}, ${this.sat}%, ${this.light - 40}%, 0)`);
+
+        if (this.shape === 'diamond') {
+          ctx.beginPath();
+          ctx.moveTo(0, -this.size);
+          ctx.lineTo(this.size, 0);
+          ctx.lineTo(0, this.size);
+          ctx.lineTo(-this.size, 0);
+          ctx.closePath();
+          ctx.fillStyle = gradient;
+          ctx.fill();
+          ctx.shadowColor = `hsla(35, 80%, 60%, ${alpha * 0.3})`;
+          ctx.shadowBlur = 20;
+          ctx.fill();
+        } else {
+          ctx.beginPath();
+          ctx.arc(0, 0, this.size, 0, Math.PI * 2);
+          ctx.fillStyle = gradient;
+          ctx.fill();
+          ctx.shadowColor = `hsla(35, 80%, 60%, ${alpha * 0.3})`;
+          ctx.shadowBlur = 20;
+          ctx.fill();
+        }
+        ctx.restore();
+        ctx.shadowBlur = 0;
+      }
+    }
+
+    // ── Trigger Particle Burst ──
+    function triggerBurst() {
+      if (pBurstTriggered) return;
+      pBurstTriggered = true;
+      pBurstStarted = true;
+      const cx = pCanvas.width / 2;
+      const cy = pCanvas.height / 2 - 40;
+      const count = 220;
+      for (let i = 0; i < count; i++) {
+        pParticles.push(new BurstParticle(
+          cx + (Math.random() - 0.5) * 40,
+          cy + (Math.random() - 0.5) * 40
+        ));
+      }
+      // Add extra sparkle ring
+      for (let i = 0; i < 60; i++) {
+        const angle = (i / 60) * Math.PI * 2;
+        const dist = 20 + Math.random() * 30;
+        const p = new BurstParticle(
+          cx + Math.cos(angle) * dist,
+          cy + Math.sin(angle) * dist
+        );
+        p.vx = Math.cos(angle) * (6 + Math.random() * 4);
+        p.vy = Math.sin(angle) * (6 + Math.random() * 4);
+        p.size = 3 + Math.random() * 4;
+        p.shape = 'diamond';
+        pParticles.push(p);
+      }
+    }
+
+    // ── Animate Particles ──
+    function animateBurstParticles() {
+      pCtx.clearRect(0, 0, pCanvas.width, pCanvas.height);
+
+      if (pParticles.length === 0 && pBurstStarted) {
+        pBurstStarted = false;
+        return;
+      }
+
+      pParticles = pParticles.filter(p => p.update());
+      pParticles.forEach(p => p.draw(pCtx));
+
+      if (pParticles.length > 0 || pBurstStarted) {
+        requestAnimationFrame(animateBurstParticles);
+      }
+    }
+
+    // ── Start burst after text animation ──
+    const preloader = document.getElementById('preloader');
+    let burstTimer = null;
+
+    // Watch for text animation completion
+    function checkTextAnimation() {
+      const chars = document.querySelectorAll('.char');
+      let allDone = true;
+      chars.forEach(c => {
+        const style = window.getComputedStyle(c);
+        const dashoffset = style.strokeDashoffset;
+        if (dashoffset && parseFloat(dashoffset) > 10) {
+          allDone = false;
+        }
+      });
+      if (allDone && !pBurstTriggered) {
+        triggerBurst();
+        animateBurstParticles();
+        clearInterval(burstCheckInterval);
+      }
+    }
+
+    // Check every 100ms
+    const burstCheckInterval = setInterval(checkTextAnimation, 100);
+
+    // ── Fallback: force burst after 3 seconds ──
+    setTimeout(() => {
+      if (!pBurstTriggered) {
+        triggerBurst();
+        animateBurstParticles();
+        clearInterval(burstCheckInterval);
+      }
+    }, 3200);
+
+    // ── Hide preloader after burst settles ──
+    function hidePreloader() {
+      if (pParticles.length < 20 || !pBurstTriggered) {
+        setTimeout(hidePreloader, 100);
+        return;
+      }
+
+      // Wait for particles to mostly fade
+      const checkParticles = setInterval(() => {
+        const activeParticles = pParticles.filter(p => p.life > 0.1);
+        if (activeParticles.length < 30) {
+          clearInterval(checkParticles);
+          setTimeout(() => {
+            preloader.classList.add('hidden');
+            document.body.style.overflow = '';
+          }, 500);
+        }
+      }, 200);
+
+      // Safety timeout
+      setTimeout(() => {
+        if (!preloader.classList.contains('hidden')) {
+          preloader.classList.add('hidden');
+          document.body.style.overflow = '';
+        }
+      }, 5000);
+    }
+
+    // ── Start the hiding process after burst ──
+    setTimeout(hidePreloader, 4000);
+
+    // ── Ensure particles canvas is visible ──
+    document.getElementById('preloaderParticles').style.display = 'block';
+
+    // === REST OF SITE SCRIPTS ===
+
+    // ── Header scroll ──
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 50);
+    });
+
+    // ── Bag counter ──
+    let bagCount = 0;
+    const bagCountEl = document.getElementById('bagCount');
+    document.querySelectorAll('[data-add]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        bagCount++;
+        bagCountEl.textContent = bagCount;
+        const orig = btn.textContent;
+        btn.textContent = 'Added ✓';
+        setTimeout(() => { btn.textContent = orig; }, 1200);
+      });
+    });
+
+    // ── Wishlist ──
+    document.querySelectorAll('[data-wish]').forEach(btn => {
+      btn.addEventListener('click', () => btn.classList.toggle('active'));
+    });
+
+    // ── Video modal ──
+    const modal = document.getElementById('videoModal');
+    const modalVideo = document.getElementById('modalVideo');
+
+    function openModal() {
+      modal.classList.add('open');
+      modalVideo.currentTime = 0;
+      modalVideo.play().catch(() => {});
+    }
+
+    function closeModal() {
+      modal.classList.remove('open');
+      modalVideo.pause();
+    }
+    document.getElementById('playFilmBtn').addEventListener('click', openModal);
+    document.getElementById('closeModal').addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+    // ── Collection slider ──
+    const track = document.getElementById('collectionTrack');
+    const prevBtn = document.getElementById('colPrev');
+    const nextBtn = document.getElementById('colNext');
+    let currentIndex = 0;
+    const totalCards = track.children.length;
+    const visibleCards = window.innerWidth < 700 ? 1 : (window.innerWidth < 1100 ? 2 : 3);
+    const cardWidth = track.children[0].offsetWidth + 24;
+
+    function updateSlider() {
+      const maxIndex = Math.max(0, totalCards - visibleCards);
+      if (currentIndex > maxIndex) currentIndex = maxIndex;
+      if (currentIndex < 0) currentIndex = 0;
+      track.style.transform = `translateX(-${currentIndex * cardWidth}px)`;
+    }
+
+    nextBtn.addEventListener('click', () => {
+      const maxIndex = Math.max(0, totalCards - visibleCards);
+      if (currentIndex < maxIndex) currentIndex++;
+      else currentIndex = 0;
+      updateSlider();
+    });
+    prevBtn.addEventListener('click', () => {
+      if (currentIndex > 0) currentIndex--;
+      else currentIndex = Math.max(0, totalCards - visibleCards);
+      updateSlider();
+    });
+    window.addEventListener('resize', () => { setTimeout(updateSlider, 100); });
+    setTimeout(updateSlider, 200);
+
+    // ── Futuristic carousel ──
+    const dots = document.querySelectorAll('.dot');
+    const glassCards = document.querySelectorAll('.product-glass-card');
+    let currentDot = 0;
+    let autoScrollInterval;
+
+    function goToCard(index) {
+      if (index >= glassCards.length) index = 0;
+      if (index < 0) index = glassCards.length - 1;
+      currentDot = index;
+      dots.forEach((d, i) => d.classList.toggle('active', i === index));
+      glassCards.forEach((card, i) => {
+        card.dataset.active = i === index ? 'true' : 'false';
+      });
+    }
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        clearInterval(autoScrollInterval);
+        goToCard(i);
+        startAutoScroll();
+      });
+    });
+
+    function startAutoScroll() {
+      if (autoScrollInterval) clearInterval(autoScrollInterval);
+      autoScrollInterval = setInterval(() => { goToCard(currentDot + 1); }, 4000);
+    }
+    goToCard(0);
+    startAutoScroll();
+    const glassGrid = document.getElementById('glassProductGrid');
+    glassGrid.addEventListener('mouseenter', () => clearInterval(autoScrollInterval));
+    glassGrid.addEventListener('mouseleave', startAutoScroll);
+
+    // ── Hero Particles ──
+    const heroCanvas = document.getElementById('particleCanvas');
+    const heroCtx = heroCanvas.getContext('2d');
+    let heroParticles = [];
+
+    function resizeHeroCanvas() {
+      heroCanvas.width = heroCanvas.parentElement.offsetWidth;
+      heroCanvas.height = heroCanvas.parentElement.offsetHeight;
+    }
+    resizeHeroCanvas();
+    window.addEventListener('resize', resizeHeroCanvas);
+
+    class HeroParticle {
+      constructor() { this.reset(); }
+      reset() {
+        this.x = Math.random() * heroCanvas.width;
+        this.y = Math.random() * heroCanvas.height;
+        this.size = Math.random() * 2 + 0.5;
+        this.speedX = (Math.random() - 0.5) * 0.3;
+        this.speedY = (Math.random() - 0.5) * 0.3;
+        this.opacity = Math.random() * 0.5 + 0.1;
+        this.pulse = Math.random() * Math.PI * 2;
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        this.pulse += 0.02;
+        if (this.x < 0 || this.x > heroCanvas.width || this.y < 0 || this.y > heroCanvas.height) this.reset();
+      }
+      draw() {
+        const opacity = this.opacity * (0.7 + 0.3 * Math.sin(this.pulse));
+        heroCtx.beginPath();
+        heroCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        heroCtx.fillStyle = `rgba(201, 169, 110, ${opacity})`;
+        heroCtx.fill();
+        heroCtx.shadowColor = `rgba(201, 169, 110, ${opacity * 0.3})`;
+        heroCtx.shadowBlur = 10;
+        heroCtx.fill();
+        heroCtx.shadowBlur = 0;
+      }
+    }
+
+    for (let i = 0; i < 80; i++) heroParticles.push(new HeroParticle());
+
+    function animateHeroParticles() {
+      heroCtx.clearRect(0, 0, heroCanvas.width, heroCanvas.height);
+      heroParticles.forEach(p => { p.update();
+        p.draw(); });
+      for (let i = 0; i < heroParticles.length; i++) {
+        for (let j = i + 1; j < heroParticles.length; j++) {
+          const dx = heroParticles[i].x - heroParticles[j].x;
+          const dy = heroParticles[i].y - heroParticles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 120) {
+            heroCtx.beginPath();
+            heroCtx.moveTo(heroParticles[i].x, heroParticles[i].y);
+            heroCtx.lineTo(heroParticles[j].x, heroParticles[j].y);
+            heroCtx.strokeStyle = `rgba(201, 169, 110, ${0.06 * (1 - dist / 120)})`;
+            heroCtx.lineWidth = 0.5;
+            heroCtx.stroke();
+          }
+        }
+      }
+      requestAnimationFrame(animateHeroParticles);
+    }
+    animateHeroParticles();
+
+    // ── Prevent body scroll during preloader ──
+    document.body.style.overflow = 'hidden';
+
+    // ── Once preloader hides, allow scroll ──
+    const observer = new MutationObserver(() => {
+      if (preloader.classList.contains('hidden')) {
+        document.body.style.overflow = '';
+        observer.disconnect();
+      }
+    });
+    observer.observe(preloader, { attributes: true, attributeFilter: ['class'] });
+  </script>
+</body>
+</html>
