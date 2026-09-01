@@ -313,26 +313,27 @@
       100% { transform: translateX(-100%); }
     }
 
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 14px 60px;
-      background: rgba(20, 14, 9, 0.85);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      border-bottom: 1px solid rgba(255, 253, 249, 0.06);
-      position: fixed;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 1000;
-      transition: all .4s ease;
-    }
-    header.scrolled {
-      padding: 10px 60px;
-      background: rgba(20, 14, 9, 0.95);
-    }
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 60px;
+  background: rgba(20, 14, 9, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 253, 249, 0.06);
+  position: fixed;
+  top: 35px; /* ADD THIS — height of the announcement bar */
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: all .4s ease;
+}
+header.scrolled {
+  padding: 10px 60px;
+  background: rgba(20, 14, 9, 0.95);
+  top: 38px; /* ADD THIS */
+}
     .logo {
       font-family: 'Cormorant Garamond', serif;
       font-size: 24px;
@@ -404,14 +405,15 @@
       color: #fff;
     }
 
-    .hero {
-      position: relative;
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      overflow: hidden;
-      background: var(--brown-900);
-    }
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background: var(--brown-900);
+  margin-top: 38px; /* ADD THIS — height of announcement bar */
+}
     #particleCanvas {
       position: absolute;
       inset: 0;
@@ -1900,7 +1902,7 @@
     
     <!-- Space -->
     <tspan class="char" dx="12"> </tspan>
-    <tspan class="char" dx="12"> </tspan>
+    
     
     <!-- JEWELLERY -->
     <tspan class="char" dx="4">J</tspan>
@@ -1947,7 +1949,6 @@
       <button class="bag-label" id="bagBtn"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 8h12l-1 12H7L6 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/></svg> BAG (<span id="bagCount">0</span>)</button>
     </div>
   </header>
-
   <!-- HERO -->
   <section class="hero" id="hero">
     <img class="hero-bg-image" src="https://images.unsplash.com/photo-1601121141418-c1caa10a2a0b?q=80&w=870&auto=format&fit=crop" alt="Dubai luxury">
@@ -1968,17 +1969,7 @@
           <button class="play-film-hero" id="playFilmBtn"><span class="play-circle-hero"><svg width="16" height="16" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>Watch Film</button>
         </div>
       </div>
-      <div class="hero-visual">
-        <div class="hero-ring-display">
-          <div class="ring-glow"></div><div class="ring-glow-2"></div>
-          <img class="ring-main" src="https://images.unsplash.com/photo-1605100804763-247f67b3557e?w=600&h=600&fit=crop" alt="Luxury diamond ring">
-          <span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span>
-          <span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span><span class="sparkle"></span>
-          <div class="hero-badge hero-badge-1"><span class="number">18K</span><span class="label">Gold • Certified</span></div>
-          <div class="hero-badge hero-badge-2"><span class="number">40+</span><span class="label">Years of Excellence</span></div>
-          <div class="hero-badge hero-badge-3"><span class="number">✦</span><span class="label">GIA Certified</span></div>
-        </div>
-      </div>
+
     </div>
     <div class="scroll-indicator"><div class="mouse"><div class="wheel"></div></div><span>Scroll to explore</span></div>
   </section>
